@@ -10,7 +10,10 @@ node {
     }
     
     stage('Docker build') {
-        sh "docker build -t avantaditya/hello-world:${BUILD_NUMBER} ."
-	sh "docker push avantaditya/hello-world:${BUILD_NUMBER}"
+	withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'docker_password', usernameVariable: 'docker_username')]) {
+	   sh "docker build -t avantaditya/hello-world:${BUILD_NUMBER} ."
+	   sh "docker login"	
+	   sh "docker push avantaditya/hello-world:${BUILD_NUMBER}"
+	}
     }
 }

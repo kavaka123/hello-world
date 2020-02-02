@@ -10,7 +10,9 @@ node {
     }
     
     stage('Docker build') {
-	def customImage = docker.build("avantaditya/hello-world:${env.BUILD_ID}")
-	customImage.push()
+	docker.withRegistry('https://index.docker.io', 'dockerhub') {
+	   def customImage = docker.build("avantaditya/hello-world:${env.BUILD_ID}")
+	   customImage.push()
+	}
     }
 }

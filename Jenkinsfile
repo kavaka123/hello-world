@@ -10,10 +10,7 @@ node {
     }
     
     stage('Docker build') {
-	withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'docker_password', usernameVariable: 'docker_username')]) {
-	   sh "docker build -t avantaditya/hello-world:${BUILD_NUMBER} ."
-	   sh "docker login"	
-	   sh "docker push avantaditya/hello-world:${BUILD_NUMBER}"
-	}
+	def customImage = docker.build("avantaditya/hello-world:${env.BUILD_ID}")
+	customImage.push()
     }
 }

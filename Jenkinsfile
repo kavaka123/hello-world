@@ -10,6 +10,6 @@ node {
     }
     
     stage('Docker build') {
-        sh "docker build -t avantaditya/hello-world:${BUILD_NUMBER}"
+        sh "docker build -t avantaditya/hello-world:${BUILD_NUMBER} ."
     }
 }

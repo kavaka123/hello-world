@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: hello-world-containers
-        image: avantaditya/hello-world
+        image: avantaditya/hello-world:${BUILD_ID}
         imagePullPolicy: Always
         ports:
         - containerPort: 8080                    

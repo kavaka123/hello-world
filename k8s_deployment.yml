@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: hello-world-containers
-        image: avantaditya/simple-devops-image
+        image: avantaditya/hello-world
         imagePullPolicy: Always
         ports:
         - containerPort: 8080                    

@@ -21,7 +21,7 @@ try{
         kubernetesDeploy configs: '**/*.yml', dockerCredentials: [[credentialsId: 'dockerhub']], kubeConfig: [path: ''], kubeconfigId: 'minikube_k8s', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
     }
 } finally {
-    emailext attachLog: true, body: '<h1>Please check the logs at: ${BUILD_URL}</h1>', mimeType: 'text/html', subject: '${PROJECT_NAME} run is a ${BUILD_STATUS}', to: 'avant.aditya@gmail.com'
+    emailext attachLog: true, body: '<h1>Please check the logs at: ${BUILD_URL}</h1>', mimeType: 'text/html', subject: '${PROJECT_NAME}: ${BUILD_NUMBER} run is a ${BUILD_STATUS}', to: 'avant.aditya@gmail.com'
 }
 
 }
